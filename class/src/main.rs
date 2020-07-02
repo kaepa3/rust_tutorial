@@ -10,12 +10,18 @@ impl RightTriangle {
         self.base + self.perpendicular + (self.base.powi(2) + self.perpendicular.powi(2)).sqrt()
     }
 }
-struct Rectangle {
-    width: f64,
-    height: f64,
+struct Rectangle<T,S> {
+    width: T,
+    height: S,
 }
 
-impl Rectangle {
+impl<T,S> Rectangle<T,S> {
+    fn new(width: T, height:S)->Rectangle<T,S>{
+        Rectangle{
+            width: width,
+            height:height,
+        }
+    }
     fn area(&self) -> f64 {
         self.width * self.height
     }
@@ -31,8 +37,8 @@ fn main() {
     println!("{}", tri.area());
     println!("{}", tri.length());
 
-    let rec = Rectangle{
-        width: 3.0,
+    let rec = Rectangle::<i32,f64>{
+        width: 2,
         height: 4.0,
     };
     println!("{}", rec.area());
